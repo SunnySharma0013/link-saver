@@ -1,20 +1,23 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [message, setMessage] = useState('');
-  const navigate = useNavigate();
+
+  // ✅ Use your Render backend URL here:
+  const API_URL = 'https://link-saver-backend.onrender.com/api/auth/login';
 
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post('http://localhost:5000/api/auth/login', { email, password });
-      localStorage.setItem('token', res.data.token); 
+      const res = await axios.post(API_URL, { email, password });
       setMessage('✅ Login successful!');
-      setTimeout(() => navigate('/dashboard'), 1000); 
+      localStorage.setItem('token', res.data.token);
+
+      // ✅ Optionally redirect to Dashboard
+      window.location.href = '/dashboard';
     } catch (err) {
       setMessage('❌ ' + (err.response?.data?.message || 'Login failed'));
     }
@@ -49,7 +52,7 @@ const Login = () => {
                   required
                 />
               </div>
-              <button type="submit" className="btn btn-success w-100">Login</button>
+              <button type="submit" className="btn btn-primary w-100">Login</button>
             </form>
             {message && <div className="alert alert-info mt-3">{message}</div>}
           </div>

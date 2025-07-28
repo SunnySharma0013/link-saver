@@ -3,8 +3,9 @@ import React, { useEffect, useState } from 'react';
 function Dashboard() {
   const [bookmarks, setBookmarks] = useState([]);
   const [url, setUrl] = useState('');
-  const API_URL = 'http://localhost:5000/api/bookmarks'; 
 
+  // ✅ Use your Render backend URL here:
+  const API_URL = 'https://link-saver-backend.onrender.com/api/bookmarks';
 
   useEffect(() => {
     fetch(API_URL, {
@@ -17,7 +18,6 @@ function Dashboard() {
       .then(data => setBookmarks(data))
       .catch(() => alert('Error loading bookmarks'));
   }, []);
-
 
   const saveBookmark = async () => {
     if (!url.trim()) {
@@ -70,7 +70,6 @@ function Dashboard() {
     <div style={{ padding: '20px', maxWidth: '600px', margin: '0 auto' }}>
       <h2>Your Bookmarks</h2>
 
-      {/* ✅ URL Input */}
       <input
         type="text"
         placeholder="Enter URL..."
@@ -82,7 +81,6 @@ function Dashboard() {
         Save
       </button>
 
-      {/* ✅ Bookmarks List */}
       <ul style={{ listStyle: 'none', padding: 0, marginTop: '20px' }}>
         {bookmarks.map(b => (
           <li key={b._id} style={{ marginBottom: '10px', padding: '8px', border: '1px solid #ddd' }}>

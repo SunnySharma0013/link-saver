@@ -6,10 +6,13 @@ const Signup = () => {
   const [password, setPassword] = useState('');
   const [message, setMessage] = useState('');
 
+  // ✅ Use your Render backend URL here:
+  const API_URL = 'https://link-saver-backend.onrender.com/api/auth/signup';
+
   const handleSignup = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post('http://localhost:5000/api/auth/signup', { email, password });
+      const res = await axios.post(API_URL, { email, password });
       setMessage('✅ Signup successful!');
       localStorage.setItem('token', res.data.token);
     } catch (err) {
