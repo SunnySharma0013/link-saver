@@ -7,7 +7,7 @@ const app = express();
 
 
 const corsOptions = {
-  origin: 'http://localhost:3000',
+  origin: 'https://link-saver-frontend-jvbp.onrender.com',
   credentials: true,
   allowedHeaders: ['Content-Type', 'Authorization']
 };
