@@ -5,7 +5,8 @@ function Dashboard() {
   const [url, setUrl] = useState('');
 
   // ✅ Use your Render backend URL here:
-  const API_URL = 'https://link-saver-backend.onrender.com/api/bookmarks';
+ const API_URL = 'https://link-saver-fcy9.onrender.com/api/bookmarks';
+
 
   useEffect(() => {
     fetch(API_URL, {

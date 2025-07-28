@@ -7,7 +7,8 @@ const Signup = () => {
   const [message, setMessage] = useState('');
 
   // ✅ Use your Render backend URL here:
-  const API_URL = 'https://link-saver-backend.onrender.com/api/auth/signup';
+ const API_URL = 'https://link-saver-fcy9.onrender.com/api/auth/signup';
+
 
   const handleSignup = async (e) => {
     e.preventDefault();
